@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class=" col-8 text-center">
+    <h1>Books Available</h1>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Author</th>
+                <th scope="col">Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{book.name}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.year}}</td>
+                <td><a href="update/{{book.id}}"><button type="submit" class="btn btn-info">Edit Book</button></a></td>
+                <td><a href="delete/{{book.id}}"><button type="submit" class="btn btn-danger" >Delete Book</button></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="text-center">
+        <a href="{% url 'create' %}"><button type="submit" class="btn btn-primary">Add Book</button></a>
+    </div>
+    
+</div>
+{% endblock %}
